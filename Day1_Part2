@@ -1,0 +1,43 @@
+# i get my second star in advant 
+# the result is 215594
+# the txt file is examples_Calories_part1.txt
+
+# First Python script in order to solve Puzzle day 1 part 1
+# Find the Elf carrying the most Calories
+# idea
+# Open the text file that contains the Calories
+# do the sum of calorie for each ELf and put it in list
+# search for the max in that list
+Calories_File = open("examples_Calories_part1.txt")
+Inside_File = Calories_File.readlines()
+# print(Inside_File)
+# we get a list of lines but with \n cause by print we need to remove this with the method which belongs to
+# str objects " strip() "
+# Calories_List = Inside_File.strip()  **** list object has no attribute strip
+Calories_List = [item.strip() for item in Inside_File]
+# print(Calories_List)
+
+Sum_elf = 0
+new_List = []
+for i in Calories_List:
+    if i != '':
+        # unsupported operand type int and str so   should convert the i to int
+        Sum_elf += int(i)
+    elif i == '':
+        new_List.append(Sum_elf)
+        Sum_elf = 0
+# print(new_List) the last items could be different to '' we need to take it in consideration
+
+new_List.append(Sum_elf)
+# print(new_List)
+
+MostCalories_CarryingElf = max(new_List)
+# print(MostCalories_CarryingElf)
+
+new_List.sort()
+# print(new_List)
+# print(len(new_List))
+# Calories are those Elves carrying in total
+
+TotalCalories = new_List[len(new_List)-1] + new_List[len(new_List)-2] + new_List[len(new_List)-3]
+print(TotalCalories)
