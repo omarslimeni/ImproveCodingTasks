@@ -1,0 +1,35 @@
+# i get my first star in advant of code Day1 part1 
+#solution result for my example 75501 
+# txt file : Examples_Calories_part1.txt
+
+# Code:
+
+# First Python script in order to solve Puzzle day 1 part 1
+# Find the Elf carrying the most Calories
+# idea
+# Open the text file that contains the Calories
+# do the sum of calorie for each ELf and put it in list
+# search for the max in that list
+Calories_File = open("examples_Calories_part1.txt")
+Inside_File = Calories_File.readlines()
+# print(Inside_File)
+# we get a list of lines but with \n cause by print we need to remove this with the method which belongs to
+# str objects " strip() "
+# Calories_List = Inside_File.strip()  **** list object has no attribute strip
+Calories_List = [item.strip() for item in Inside_File]
+# print(Calories_List)
+
+Sum_elf = 0
+new_List = []
+for i in Calories_List:
+    if i != '':
+        # unsupported operand type int and str so   should convert the i to int
+        Sum_elf += int(i)
+    elif i == '':
+        new_List.append(Sum_elf)
+        Sum_elf = 0
+# print(new_List) the last items could be different to '' we need to take it in consideration
+
+new_List.append(Sum_elf)
+MostCalories_CarryingElf = max(new_List)
+print(MostCalories_CarryingElf)
