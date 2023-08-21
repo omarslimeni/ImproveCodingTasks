@@ -1,0 +1,48 @@
+# Day 2 Part1 i got my third star on advent
+# result 11767
+# txt file used Tournament_Example.txt
+
+# this draft will be updated using Dictionary 
+
+#code:
+# Puzzle nubmer 2
+# part1
+
+#def Read_File_content():
+Tournament_Result = open("Tournament_Example.txt")
+Lines = Tournament_Result.readlines()
+# print(Lines)
+
+Tournament_Result_List = [item.strip() for item in Lines]
+# print(Tournament_Result_List)
+
+First_Score = 0
+List_without_draw=[]
+for i in Tournament_Result_List:
+    if i == 'A X':
+        First_Score += 4
+    elif i == 'B Y':
+        First_Score += 5
+    elif i == 'C Z':
+        First_Score += 6
+    else:
+        First_Score += 0
+List_Without_Draw=[item for item in Tournament_Result_List if (item != "A X") and (item != "B Y") and (item != "C Z")]
+# print(List_without_draw)
+# print (First_Score)
+Second_Score =0
+for j in List_Without_Draw:
+    if j == 'A Y':
+        Second_Score += 8
+    elif j == 'A Z':
+        Second_Score += 3
+    elif j == 'B X':
+        Second_Score += 1
+    elif j== 'B Z':
+        Second_Score += 9
+    elif j== 'C X':
+        Second_Score += 7
+    elif j== 'C Y':
+        Second_Score += 2
+Total_Score = Second_Score + First_Score
+print (Total_Score)
