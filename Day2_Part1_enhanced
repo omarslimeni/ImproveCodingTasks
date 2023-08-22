@@ -1,0 +1,60 @@
+#Day2 part1 enhanced code using ditionary
+#code :
+
+# Puzzle number 2
+# part1
+
+def read_file_content():
+    tournament_result = open("Tournament_Example.txt")
+    lines = tournament_result.readlines()
+    # print(lines)
+    result_list = [item.strip() for item in lines]
+    print(result_list)
+    return result_list
+
+
+
+def high_score_calculation():
+    tournament_result_list = read_file_content()
+    expected_result = {'A': {'X': 4, 'Y': 8, 'Z': 3}, 'B': {'X': 1, 'Y': 5, 'Z': 9}, 'C': {'X': 7, 'Y': 2, 'Z': 6}}
+    total_score = 0
+    for item in tournament_result_list:
+        move_of_opponent = item[0]
+        my_move = item[2]
+        total_score += expected_result[move_of_opponent][my_move]
+    return total_score
+
+
+my_score = high_score_calculation()
+print(my_score)
+#
+# First_Score = 0
+# List_without_draw=[]
+# for i in Tournament_Result_List:
+#     if i == 'A X':
+#         First_Score += 4
+#     elif i == 'B Y':
+#         First_Score += 5
+#     elif i == 'C Z':
+#         First_Score += 6
+#     else:
+#         First_Score += 0
+# List_Without_Draw=[item for item in Tournament_Result_List if (item != "A X") and (item != "B Y") and (item != "C Z")]
+# # print(List_without_draw)
+# # print (First_Score)
+# Second_Score =0
+# for j in List_Without_Draw:
+#     if j == 'A Y':
+#         Second_Score += 8
+#     elif j == 'A Z':
+#         Second_Score += 3
+#     elif j == 'B X':
+#         Second_Score += 1
+#     elif j== 'B Z':
+#         Second_Score += 9
+#     elif j== 'C X':
+#         Second_Score += 7
+#     elif j== 'C Y':
+#         Second_Score += 2
+# Total_Score = Second_Score + First_Score
+# print (Total_Score)
