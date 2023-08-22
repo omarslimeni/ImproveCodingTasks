@@ -1,0 +1,40 @@
+#Day2 Part2
+#result 13886
+# file txt used : tournament_Example
+
+# code :
+
+# Puzzle number 2
+# part2
+# A Y X 3+1=4
+# A Z Y 6+2=8
+# A X Z 0+3=3
+# B Y Y 3+2=5
+# B Z Z 6+3=9
+# B X X 0+1=1
+# C Y C 3+3=6
+# C Z X 6+1=7
+# C X Y 0+2=2
+def read_file_content():
+    tournament_result = open("Tournament_Example.txt")
+    lines = tournament_result.readlines()
+    # print(lines)
+    result_list = [item.strip() for item in lines]
+    print(result_list)
+    return result_list
+
+
+
+def high_score_calculation():
+    tournament_result_list = read_file_content()
+    expected_result = {'A': {'X': 3, 'Y': 4, 'Z': 8}, 'B': {'X': 1, 'Y': 5, 'Z': 9}, 'C': {'X': 2, 'Y': 6, 'Z': 7}}
+    total_score = 0
+    for item in tournament_result_list:
+        move_of_opponent = item[0]
+        my_move = item[2]
+        total_score += expected_result[move_of_opponent][my_move]
+    return total_score
+
+
+my_score = high_score_calculation()
+print(my_score)
