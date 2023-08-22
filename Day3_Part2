@@ -1,0 +1,104 @@
+#Day3 part2 
+#result 2703
+# same file Rucksacks.txt
+
+#code:
+
+# Puzzle number 3
+# part2
+
+def read_file_content():
+    rucksacks_contents = open("Rucksacks.txt")
+    lines = rucksacks_contents.readlines()
+    #print(lines)
+    result_list = [item.strip() for item in lines]
+    #print(result_list)
+    return result_list
+
+
+def group_of_elves():
+    result_list = read_file_content()
+    list1 = []
+    list2 = []
+
+    print(len(result_list))
+    while len(result_list) >= 3:
+        for step in range(3):
+            # print (step)
+            # print(om)
+            list1.append(result_list[step])
+        list2.append(list1)
+        list1 = []
+        # print(result_list)
+        del result_list[0:3]
+        # print(result_list)
+        # print(list1)
+        # print(list2)
+    return list2
+
+
+list_of_elves_group = group_of_elves()
+print(list_of_elves_group)
+
+
+def final_list_calculation():
+    list_of_elves_group = group_of_elves()
+
+    new_list = []
+    first_part =[]
+    second_part =[]
+    third_part =[]
+    final_list =[]
+    for i in list_of_elves_group:
+        first_part = i[0]
+        second_part = i[1]
+        third_part = i[2]
+        print(first_part)
+        print(second_part)
+        print(third_part)
+        item_list = []
+        for j in first_part:
+            for k in second_part:
+                if j == k:
+                   item_list.append(j)
+        #item_list = list(set(item_list))
+        #print(item_list)
+        for m in item_list:
+            for h in third_part:
+                if m == h:
+                    new_list.append(m)
+        item_list = []
+        #print("yyyy",item_list)
+        #print("rrr",new_list)
+        new_list = list(set(new_list))
+        final_list.append(new_list[0])
+        new_list=[]
+        print("list",final_list)
+    return final_list
+
+
+
+import string
+def dictionary_merge():
+    lowercase_alpha = dict(zip(string.ascii_lowercase, range(1,27)))
+    uppercase_alpha = dict(zip(string.ascii_uppercase, range(27,53)))
+    priority_dict = lowercase_alpha | uppercase_alpha
+    print(priority_dict)
+    return priority_dict
+
+
+def prirority_calculation():
+    final_list = final_list_calculation()
+    priority_dict = dictionary_merge()
+    total_priority = 0
+    for final_item in final_list :
+        total_priority += priority_dict[final_item[0]]
+    #print(total_priority)
+    return total_priority
+
+total_prioarity_items = prirority_calculation()
+print (total_prioarity_items)
+
+
+
+
