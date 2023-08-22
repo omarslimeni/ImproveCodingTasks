@@ -1,0 +1,61 @@
+#Day 3 part 1
+# result 7795
+# file txt used Rucksacks.txt
+
+# code: 
+
+# Puzzle number 3
+# part1
+
+def read_file_content():
+    rucksacks_contents = open("Rucksacks.txt")
+    lines = rucksacks_contents.readlines()
+    print(lines)
+    result_list = [item.strip() for item in lines]
+    print(result_list)
+    return result_list
+
+
+def final_list_calculation():
+    result_list = read_file_content()
+    new_list = []
+    first_part =[]
+    second_part =[]
+    final_list =[]
+    for i in result_list:
+        first_part = i[0:len(i)//2]
+        second_part = i[len(i)//2:]
+        print(first_part)
+        print(second_part)
+        item_list = []
+        for j in first_part:
+            for k in second_part:
+                if j == k:
+                   item_list.append(j)
+        item_list = list(set(item_list))
+        final_list.append(item_list[0])
+        print(final_list)
+    return final_list
+
+
+
+import string
+def dictionary_merge():
+    lowercase_alpha = dict(zip(string.ascii_lowercase, range(1,27)))
+    uppercase_alpha = dict(zip(string.ascii_uppercase, range(27,53)))
+    priority_dict = lowercase_alpha | uppercase_alpha
+    print(priority_dict)
+    return priority_dict
+
+
+def prirority_calculation():
+    final_list = final_list_calculation()
+    priority_dict = dictionary_merge()
+    total_priority = 0
+    for final_item in final_list :
+        total_priority += priority_dict[final_item[0]]
+    #print(total_priority)
+    return total_priority
+
+total_prioarity_items = prirority_calculation()
+print (total_prioarity_items)
