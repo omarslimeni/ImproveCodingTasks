@@ -1,0 +1,58 @@
+#day4 part1
+#result 477
+#file used : pair_assignement.txt
+# code:
+
+
+# Puzzle number 4
+# part1
+import re
+
+
+def read_file_content():
+    pair_assignement = open("pair_assignement.txt")
+    lines = pair_assignement.readlines()
+    #print(lines)
+    result_list = [item.strip() for item in lines]
+    #print(result_list)
+    return result_list
+
+
+def contained_pair_calculation():
+    result_list = read_file_content()
+    contained_pair = 0
+    first_part =[]
+    second_part =[]
+    third_part =[]
+    fourth_part =[]
+    part1 = []
+    part2 = []
+    for i in result_list:
+        part1 = re.findall(r"(\d+)-", i)
+        part2 = re.findall(r"-(\d+)", i)
+        first_part = part1[0]
+        second_part = part2[0]
+        third_part = part1[1]
+        fourth_part = part2[1]
+        print(first_part)
+        print(second_part)
+        print(third_part)
+        print(fourth_part)
+        print(type(first_part))
+        a = int(first_part)
+        b = int(second_part)
+        c = int(third_part)
+        d = int(fourth_part)
+        if (a >= c and b <= d ) or (a <= c and b >= d):
+           contained_pair += 1
+           print ("it's contained pair")
+           print ("number",contained_pair)
+        else:
+           print("regular_pair")
+    print(contained_pair)
+    return contained_pair
+
+
+
+contained_pair = contained_pair_calculation()
+print(contained_pair)
