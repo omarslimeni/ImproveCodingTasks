@@ -1,0 +1,103 @@
+#Day5_Part2
+# result : CDTQZHBRS
+# i get my star number 10
+# same file 
+#code:
+
+# Puzzle number 5
+# part1
+
+
+
+#def read_file_content():
+stacks_of_crates_arragement = open("stacks_of_crates.txt", "r")
+
+file = stacks_of_crates_arragement.read()
+lines = file.split('\n')
+crates_list = []
+for i in lines:
+    if "[" in i:
+       crates_list.append(i)
+#print("crates_list",crates_list)
+#print(file)
+stackes_list2 = []
+for j in lines:
+    stackes_list2.append(j)
+#print(stackes_list2)
+index = stackes_list2.index('')
+number_of_stacks = stackes_list2[index-1]
+number_of_stackes = number_of_stacks.split()
+#print(number_of_stackes)
+
+list_of_moves = stackes_list2[index+1::]
+#print(list_of_moves)
+
+dictionary= {}
+#print(len(number_of_stackes))
+
+for k in range(4):
+    dictionary[str(k+1)]=[]
+#print(dictionary)
+#print(range(len(number_of_stackes)))
+
+list_of_position = []
+    #print(reversed(crates_list))
+for d in range(len(number_of_stackes)):
+        #print(len(number_of_stackes)-1)
+    position = (d*4)+1
+    list_of_position.append(position)
+    #print(position)
+#print(list_of_position)
+p=list_of_position[len(list_of_position)-1]
+ # print("jjjjj", p)
+# print(dictionary)
+
+
+# for row in range(len(crates_list)):
+#     #print(len(row))
+#     if len(crates_list[row]) != p+2:
+#         crates_list[row] = crates_list[row] + ' [*]'
+#
+#         #crates_list[index(row)]
+#
+#         print(crates_list[row])
+#
+# print('aarara',crates_list)
+dict1 = {}
+for w in range(len(number_of_stackes)):
+    dict1[w+1]=[]
+
+#print(dictionary)
+for e in reversed(crates_list):
+    for f in range(len(number_of_stackes)):
+        position = (f * 4) + 1
+        list_of_position.append(position)
+        letter = e[position]
+        # print(position)
+        if letter != ' ':
+             dict1[f+1].append(letter)
+
+# print(dict1)
+
+
+print(list_of_moves)
+print(dict1)
+
+
+
+
+import re
+for move in list_of_moves:
+    list_of_value_of_moves = re.findall(r'\d+', move)
+    print(list_of_value_of_moves)
+    number_crates_to_move = int (list_of_value_of_moves[0])
+    crates_to_move_from = int(list_of_value_of_moves[1])
+    crates_to_move_to = int(list_of_value_of_moves[2])
+    crates_to_move = (dict1[crates_to_move_from][-number_crates_to_move:])
+    dict1[crates_to_move_from] = dict1[crates_to_move_from][:-number_crates_to_move]
+    dict1[crates_to_move_to] += crates_to_move
+print(dict1)
+top_crates =''
+for crate in dict1.values():
+    top_crates += crate[-1]
+print(top_crates)
