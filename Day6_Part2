@@ -1,0 +1,32 @@
+#Day6 part2
+#result 2145
+# same file 
+# code :
+
+# Day6 part2
+# puzzle6
+
+def read_file_content():
+    file = open("datastream.txt", "r")
+    datastream = file.read()
+    datastream_list = [c for c in datastream]
+    return(datastream_list)
+
+
+def number_of_caracter_calculation():
+    datastream = read_file_content()
+
+    number_of_caracter = 14
+    for h in range (len(datastream)):
+        list1 =  datastream[h:h+14]
+        print(list1)
+        if (len(set(list1)) == 14):
+            return number_of_caracter
+        else:
+             number_of_caracter +=1
+    return number_of_caracter
+number_of_caractar = number_of_caracter_calculation()
+print("ee",number_of_caractar)
+
+
+
