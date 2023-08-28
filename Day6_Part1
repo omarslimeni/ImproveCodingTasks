@@ -1,0 +1,32 @@
+#Day 6 part1
+#puzzle 6
+#result 1544
+#code
+
+
+# Day6 part6
+# puzzle6
+
+def read_file_content():
+    file = open("datastream.txt", "r")
+    datastream = file.read()
+    datastream_list = [c for c in datastream]
+    return(datastream_list)
+
+def number_of_caracters_calculation():
+    datastream = read_file_content()
+    list_of_first_maker=[]
+    for i in range(len(datastream)-3):
+        if (datastream[i] != datastream[i+1]) and (datastream[i] != datastream[i+2]) and (datastream[i] != datastream[i+3]) and (datastream[i+1] != datastream[i+2]) and (datastream[i+1] != datastream[i+3]) and (datastream[i+2] != datastream[i+3]):
+            print("not")
+            print(i+3)
+            first_maker = i+4
+            print("first_maker",first_maker)
+            list_of_first_maker.append(first_maker)
+        else:
+             print("yes")
+    print("list of first maker", list_of_first_maker)
+    print("the number of caracter", list_of_first_maker[0])
+    number_of_caracters = list_of_first_maker[0]
+    return number_of_caracters
+print (number_of_caracters_calculation())
