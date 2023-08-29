@@ -1,0 +1,63 @@
+# # puzzle 7
+# # day7 part 1
+# file used commands_file.txt
+
+# code not finished yet solution found for the example but it doesn't work for the input file
+# satus : in work
+
+import re
+
+def read_file_content():
+    file = open("commands_file.txt", "r")
+    list_of_commands = file.read()
+    commands = list_of_commands.split('\n')
+    return commands
+
+from collections import defaultdict
+commands = read_file_content()
+print(commands)
+dict1 =defaultdict(int)
+path=[]
+for line in commands:
+    #print(line.split())
+    if line[0] == "$":
+        #print('tt')
+        #print(line[2:4])
+        if line[2:4] == "cd":
+            #print(line[5])
+            if line[5] == '/':
+                path.append("/")
+               # print('rr')
+                #print(path)
+            elif line[5:7] == "..":
+                 path.pop()
+                 #print(path)
+            else:
+                path.append(line[5:])
+                #print(path)
+            print(path)
+    else:
+        size_of_file=[]
+        if line[0] != "d" and line[0] != "$":
+           size_of_file = re.findall(r"(\d+)", line)
+           item = size_of_file[0] if size_of_file else False
+           print("the item", item)
+           #size += int(item)
+           for j in range (len(path)):
+               if j <= 1:
+                   dict1[path[j]] += int(item)
+               else:
+                   parent_folder = path[j-1]
+                   current_folder = path[j]
+                   directory_key =f'{parent_folder}/{current_folder}'
+                   dict1[directory_key] += int(item)
+
+
+print(dict1)
+
+size_less_than_100000 = 0
+for f in dict1.values():
+    if f <= 100000:
+        size_less_than_100000 += f
+print(size_less_than_100000)
+
