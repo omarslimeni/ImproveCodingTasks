@@ -34,9 +34,15 @@ def solution():
             for directory in current_stack:
                 directories_size[directory] += file_size
 
+    MAX_USED_SIZE = 70000000 - 30000000
     final_list_task_1 = [el for el in directories_size.values() if el <= 100000]
     print("Task 1:")
     print(sum(final_list_task_1))
+    current_root_size = directories_size["/"]
+    space_to_free = current_root_size - MAX_USED_SIZE
+    final_list_task_2 = sorted([el for el in directories_size.values() if el >= space_to_free])
+    print("Task 2:")
+    print(final_list_task_2[0])
 
 solutions = solution()
 print(solutions)
