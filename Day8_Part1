@@ -1,0 +1,75 @@
+#Day8_part1
+#result 1688
+#file used tree_matrix
+
+#code:
+
+# puzzle 8 part 1
+
+file = open("tree_matrix.txt", "r")
+tree_matrix = file.read()
+tree_map = tree_matrix.split('\n')
+print(tree_matrix)
+print(tree_map)
+
+# calculation of the edage
+
+
+
+total_tree_at_the_edge = 2 * len(tree_map[0]) + 2 * (len(tree_map)-2)
+print(total_tree_at_the_edge)
+
+
+# summ calculation
+list1 =[]
+list2 =[]
+
+summ = 0
+for i in range(1,len(tree_map)-1):
+    line = i
+    for j in range(1,(len(tree_map[line])-1)):
+        #print("value",tree_map[line][j])
+        maxi= tree_map[line][j]
+        #print(tree_map[line])
+        right_list = tree_map[line][0:j]
+        #print("rightlist", right_list)
+        max2 = max(right_list)
+        left_list = tree_map[line][j+1:len(tree_map[line])]
+        #print("leftlist", left_list)
+        max3 = max(left_list)
+        if maxi > max2 or maxi > max3:
+            #print("visible")
+            summ += 1
+        else:
+            print(maxi)
+            #print("not visible")
+            list3 = []
+            list4 = []
+            print(j)
+            #print(tree_map)
+            for s in tree_map:
+                list3 += s[j]
+            print(list3)
+            res = "".join([str(item) for item in list3])
+            max_colun = max(res)
+            max_colun_left = res[0:line]
+            max4 = max(max_colun_left)
+            print(max_colun_left)
+            #print(max4)
+            max_colun_right = res[line+1:len(res)]
+            max5 = max(max_colun_right)
+            print(max_colun_right)
+            #print(max5)
+            if maxi > max4 or maxi > max5:
+                print("visible")
+                summ += 1
+            else:
+                print("no")
+
+print(summ)
+print(total_tree_at_the_edge)
+print(summ + total_tree_at_the_edge)
+
+
+
+
