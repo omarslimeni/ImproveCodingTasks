@@ -1,0 +1,327 @@
+# puzzle 8 part 2
+
+file = open("tree_matrix.txt", "r")
+tree_matrix = file.read()
+tree_map = tree_matrix.split('\n')
+print(tree_matrix)
+print(tree_map)
+
+# calculation of the edage
+
+
+
+total_tree_at_the_edge = 2 * len(tree_map[0]) + 2 * (len(tree_map)-2)
+print(total_tree_at_the_edge)
+
+
+# summ calculation
+list1 =[]
+list2 =[]
+list_of_produ = []
+summ = 0
+for i in range(1,len(tree_map)-1):
+    line = i
+    for j in range(1,(len(tree_map[line])-1)):
+        #print("value",tree_map[line][j])
+        maxi= tree_map[line][j]
+        #print(tree_map[line])
+        left_list = tree_map[line][0:j]
+        print("leftlist", left_list)
+        max2 = max(left_list)
+        index_max2 = left_list.index(max(left_list))+1
+        right_list = tree_map[line][j+1:len(tree_map[line])]
+        print("rightlist", right_list)
+        max3 = max(right_list)
+        print(maxi)
+        index_max3= right_list.index(max(right_list))+1
+
+        if maxi> max2 and maxi> max3:
+            x= len(left_list)
+            print(x)
+            y = len(right_list)
+            print(y)
+            #print(maxi)
+            # print("not visible")
+            list3 = []
+            list4 = []
+            #print(j)
+            # print(tree_map)
+            for s in tree_map:
+                list3 += s[j]
+            print(list3)
+            res = "".join([str(item) for item in list3])
+            max_colun = max(res)
+            max_colun_left = res[0:line]
+            max4 = max(max_colun_left)
+            index_max4 = max_colun_left.index(max(max_colun_left))+1
+            print("left",max_colun_left)
+            # print(max4)
+            max_colun_right = res[line + 1:len(res)]
+            max5 = max(max_colun_right)
+            index_max5 = max_colun_right.index(max(max_colun_right))+1
+            print("right",max_colun_right)
+            # print(max5)
+            if maxi > max4 and maxi > max5:
+                z = len(max_colun_left)
+                print(z)
+                w = len(max_colun_right)
+                print(w)
+            elif maxi > max4 and maxi <= max5:
+                z = len(max_colun_left)
+                print(z)
+                for q in max_colun_right:
+                    if q >= maxi:
+                        w = max_colun_right.index(q)+1
+                        break
+
+                print(w)
+            elif maxi <= max4 and maxi > max5:
+
+                revers_list = max_colun_left[::-1]
+                for q in revers_list:
+                    if q >= maxi:
+                        z = revers_list.index(q)+1
+                        break
+
+                #z = index_max4
+                print(z)
+                w = len(max_colun_right)
+                print(w)
+                # print("visible")
+                #print(len(left_list))
+        elif maxi > max2 and maxi <= max3:
+            x = len(left_list)
+            print(x)
+            listy =[]
+            for q in right_list:
+                print(type(q))
+                print("maxi", type(maxi))
+                if maxi >= q:
+                    print("vrai")
+                    listy.append(right_list.index(q) + 1)
+            print(listy)
+            y = int(listy[0])
+            #y = index_max3
+            print(y)
+            #print(maxi)
+            # print("not visible")
+            list3 = []
+            list4 = []
+            #print(j)
+            # print(tree_map)
+            for s in tree_map:
+                list3 += s[j]
+            print(list3)
+            res = "".join([str(item) for item in list3])
+            max_colun = max(res)
+            max_colun_left = res[0:line]
+            max4 = max(max_colun_left)
+            index_max4 = max_colun_left.index(max(max_colun_left))+1
+            print("left",max_colun_left)
+            # print(max4)
+            max_colun_right = res[line + 1:len(res)]
+            max5 = max(max_colun_right)
+            index_max5 = max_colun_right.index(max(max_colun_right))+1
+            print("right",max_colun_right)
+            # print(max5)
+            if maxi > max4 and maxi > max5:
+                z = len(max_colun_left)
+                print(z)
+                w = len(max_colun_right)
+                print(w)
+            elif maxi > max4 and maxi <= max5:
+                z = len(max_colun_left)
+                print(z)
+                listw = []
+                for q in max_colun_right:
+                    if q >= maxi:
+                        listw.append(max_colun_right.index(q) + 1)
+
+                w = listw[0]
+                #w = index_max5
+                print(w)
+            elif maxi <= max4 and maxi > max5:
+                revers_list = max_colun_left[::-1]
+                listz = []
+                for q in revers_list:
+                    if q >= maxi:
+                        listz.append(revers_list.index(q) + 1)
+
+                z = listz[0]
+                #z = index_max4
+                print(z)
+                w = len(max_colun_right)
+                print(w)
+                # print("visible")
+                #print(len(left_list))
+        elif maxi <= max2 and maxi > max3:
+
+            revers_list = left_list[::-1]
+            listx = []
+            for q in revers_list:
+                if q >= maxi:
+                    listx.append(revers_list.index(q) + 1)
+
+            x = listx[0]
+            #x = index_max2
+            print("max2=",x)
+            y = len(right_list)
+            print(y)
+            #print("visible")
+            #print(len(left_list))
+            #print(maxi)
+            # print("not visible")
+            list3 = []
+            list4 = []
+            #print(j)
+            # print(tree_map)
+            for s in tree_map:
+                list3 += s[j]
+            print(list3)
+            res = "".join([str(item) for item in list3])
+            max_colun = max(res)
+            max_colun_left = res[0:line]
+            max4 = max(max_colun_left)
+            index_max4 = max_colun_left.index(max(max_colun_left))+1
+            print(max_colun_left)
+            # print(max4)
+            max_colun_right = res[line + 1:len(res)]
+            max5 = max(max_colun_right)
+            index_max5 = max_colun_right.index(max(max_colun_right))+1
+            print(max_colun_right)
+            # print(max5)
+            if maxi > max4 and maxi > max5:
+                z = len(max_colun_left)
+                print(z)
+                w = len(max_colun_right)
+                print(w)
+            elif maxi > max4 and maxi <= max5:
+                z = len(max_colun_left)
+                print(z)
+                listw = []
+                for q in max_colun_right:
+                    if q >= maxi:
+                        listw.append(max_colun_right.index(q) + 1)
+
+                w = listw[0]
+                #w = index_max5
+                print(w)
+            elif maxi <= max4 and maxi > max5:
+                revers_list = max_colun_left[::-1]
+                listz = []
+                for q in revers_list:
+                    if q >= maxi:
+                        listz.append(max_colun_left.index(q) + 1)
+
+                z = listz[0]
+                #z = index_max4
+                print(z)
+                w = len(max_colun_right)
+                print(w)
+                # print("visible")
+                #print(len(left_list))
+        else:
+            revers_list = left_list[::-1]
+            listx = []
+            for q in revers_list:
+                if q >= maxi:
+                    listx.append(revers_list.index(q) + 1)
+
+            x = listx[0]
+            #x = index_max2
+            print(x)
+            listy = []
+            for q in right_list:
+                if q >= maxi:
+                    listy.append(right_list.index(q) + 1)
+
+            y = listy[0]
+            #y = index_max3
+            print(y)
+            #print(maxi)
+            # print("not visible")
+            list3 = []
+            list4 = []
+            #print(j)
+            # print(tree_map)
+            for s in tree_map:
+                list3 += s[j]
+            print(list3)
+            res = "".join([str(item) for item in list3])
+            max_colun = max(res)
+            max_colun_left = res[0:line]
+            max4 = max(max_colun_left)
+            index_max4 = max_colun_left.index(max(max_colun_left))+1
+            print(max_colun_left)
+            # print(max4)
+            max_colun_right = res[line + 1:len(res)]
+            max5 = max(max_colun_right)
+            index_max5 = max_colun_right.index(max(max_colun_right))+1
+            print(max_colun_right)
+            # print(max5)
+            if maxi > max4 and maxi > max5:
+                z = len(max_colun_left)
+                print(z)
+                w = len(max_colun_right)
+                print(w)
+            elif maxi > max4 and maxi <= max5:
+                z = len(max_colun_left)
+                print(z)
+                listw = []
+                for q in max_colun_right:
+                    if q >= maxi:
+                        listw.append(max_colun_right.index(q) + 1)
+
+                w = listw[0]
+                #w = index_max5
+                print(w)
+            elif maxi <= max4 and maxi > max5:
+                revers_list = max_colun_left[::-1]
+                listz = []
+                for q in revers_list:
+                    if q >= maxi:
+                        listz.append(revers_list.index(q) + 1)
+
+                z = listz[0]
+                #z = index_max4
+                print(z)
+                w = len(max_colun_right)
+                print(w)
+                # print("visible")
+                #print(len(left_list))
+            else:
+                revers_list = max_colun_left[::-1]
+                listz = []
+                for q in revers_list:
+                    if q >= maxi:
+                        listz.append(revers_list.index(q) + 1)
+
+                        z = listz[0]
+                #z = index_max4
+                print(z)
+                listw = []
+                for q in max_colun_right:
+                    if q >= maxi:
+                        listw.append(max_colun_right.index(q) + 1)
+
+                w = listw[0]
+                #w = index_max5
+                print(w)
+                # print("visible")
+                #print(len(left_list))
+        print("final", x)
+        print("final", y)
+        print("final", z)
+        print("final", w)
+        list_of_produ.append(x*y*z*w)
+        print(list_of_produ)
+
+print(list_of_produ)
+print(max(list_of_produ))
+# print(summ)
+# print(total_tree_at_the_edge)
+# print(summ + total_tree_at_the_edge)
+
+
+
+
