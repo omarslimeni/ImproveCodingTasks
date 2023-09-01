@@ -1,0 +1,34 @@
+#Day9_part1
+# code 
+
+import numpy as np
+list_of_moves = []
+for line in open("moves.txt").readlines():
+    print(line)
+    direction,step = line.split()
+    list_of_moves.append((direction,int(step)))
+print(list_of_moves)
+head_of_knot = np.array([0,0])
+tail_of_knot = np.array([0,0])
+
+dict_direction = {
+    'U': np.array([0, -1]),
+    'D': np.array([0, 1]),
+    'R': np.array([1, 0]),
+    'L': np.array([-1, 0]),
+}
+tail_position = set()
+for direction, steps in list_of_moves:
+    for _ in range(steps):
+        #print(_)
+        head_of_knot += dict_direction[direction]
+        #print(head_of_knot)
+        #print(head_of_knot)
+        difference_limit = head_of_knot - tail_of_knot
+        #a = abs(difference_limit)
+        if max(abs(difference_limit)) > 1:
+            tail_of_knot += np.sign(difference_limit)
+        print(head_of_knot, tail_of_knot)
+        #tail_position.append(tail_of_knot)
+        tail_position.add(tuple(tail_of_knot))
+print(len(tail_position))
