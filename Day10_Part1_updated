@@ -1,0 +1,313 @@
+# Day10 part1
+# result 16480
+#file used instructions.txt
+
+#code
+
+file = open("instructions.txt", "r")
+instructions = file.read().split('\n')
+#print(instructions)
+#print(instructions[0])
+#print(len(instructions))
+cycle = 0
+cycle_list = []
+cycle_index = []
+for i in range(len(instructions)):
+    #print(i)
+    #print(instructions[i])
+    if instructions[i].startswith("noop"):
+        cycle += 1
+        cycle_list.append(cycle)
+        cycle_index.append(i+1)
+    elif instructions[i].startswith("addx"):
+        cycle += 2
+        cycle_list.append(cycle)
+        cycle_index.append(i+1)
+    #print("the cycle",cycle)
+print("cycl_lisy",cycle_list)
+print(cycle_index)
+print(instructions)
+for j in cycle_list:
+    if j == 20:
+        index_20 = cycle_list.index(j)-1
+        print(index_20)
+    else:
+        if 21 in cycle_list:
+            index_20 = cycle_list.index(21)-1
+            #print(index_20)
+        else:
+            print("no thing")
+#print("eeeerrrrrrrtyu",index_20)
+#print(instructions[index_20])
+for j in cycle_list:
+    if j == 100:
+        index_100 = cycle_list.index(j)-1
+        print(index_100)
+        print(cycle_list[index_100])
+
+        print(instructions[index_100-3])
+        print(instructions[index_100-2])
+        print(instructions[index_100-1])
+        print("la valeur",instructions[index_100])
+    else:
+        if 101 in cycle_list:
+            index_100 = cycle_list.index(101) - 1
+            #print(index_100)
+        else:
+            print("no thing")
+
+for j in cycle_list:
+    if j == 60:
+        index_60 = cycle_list.index(j)-1
+        #print(index_60)
+    else:
+        if 61 in cycle_list:
+            index_60 = cycle_list.index(61) - 1
+            #print(index_60)
+        else:
+            print("no thing")
+
+for j in cycle_list:
+    if j == 180:
+        index_180 = cycle_list.index(j)-1
+        #print(index_180)
+    else:
+        if 181 in cycle_list:
+            index_180 = cycle_list.index(181) - 1
+            #print(index_180)
+        else:
+            print("no thing")
+
+for j in cycle_list:
+    if j == 140:
+        index_140 = cycle_list.index(j)-1
+        #print(index_140)
+    else:
+        if 141 in cycle_list:
+            index_140 = cycle_list.index(141) - 1
+            #print(index_140)
+        else:
+            print("no thing")
+
+for j in cycle_list:
+    if j == 220:
+        index_220 = cycle_list.index(j)-1
+        #print(cycle_list[index_220])
+        #print(len(cycle_list))
+        #print(len(instructions))
+        #print(instructions[index_220])
+        #print("index220",index_220)
+    else:
+        if 221 in cycle_list:
+            index_220 = cycle_list.index(221) - 1
+            #print(index_220)
+        else:
+            print("no thing")
+
+import re
+from more_itertools import one
+
+
+
+numbers = re.compile('-?\d+')
+list_of_sum = []
+sum = 1
+if 20 in cycle_list:
+    for j1 in range(0,index_20):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+else:
+    #print("eeeee")
+    sum = 1
+    for j1 in range(0,index_20+1):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+value_20 = sum * 20
+list_of_sum.append(value_20)
+sum = 1
+if 60 in cycle_list:
+    for j1 in range(0,index_60):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+else:
+    #print("eeeee")
+    sum = 1
+    for j1 in range(0,index_60+1):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+value_60 = sum * 60
+list_of_sum.append(value_60)
+
+sum = 1
+if 100 in cycle_list:
+    for j1 in range(0,index_100):
+        #print(j1)
+        line = instructions[j1]
+        print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+else:
+    #print("eeeee")
+    sum = 1
+    for j1 in range(0,index_100+1):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+value_100 = sum * 100
+list_of_sum.append(value_100)
+
+sum = 1
+if 140 in cycle_list:
+    for j1 in range(0,index_140):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+else:
+    #print("eeeee")
+    sum = 1
+    for j1 in range(0,index_140+1):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+value_140 = sum * 140
+list_of_sum.append(value_140)
+
+sum = 1
+if 180 in cycle_list:
+    for j1 in range(0,index_180):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+else:
+    #print("eeeee")
+    sum = 1
+    for j1 in range(0,index_180+1):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+
+value_180 = sum * 180
+list_of_sum.append(value_180)
+
+sum = 1
+if 220 in cycle_list:
+    for j1 in range(0,index_220):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+else:
+    #print("eeeee")
+    sum = 1
+    for j1 in range(0,index_220+1):
+        #print(j1)
+        line = instructions[j1]
+        #print(line)
+        result = list(map(int, numbers.findall(line)))
+        #print(result)
+
+        if result == []:
+           sum += 0
+        else:
+           value = int(one(result))
+           sum += value
+value_220 = sum * 220
+list_of_sum.append(value_220)
+
+#print(sum)
+print(list_of_sum)
+
+total=0
+for i in range(len(list_of_sum)):
+    total=total+list_of_sum[i]
+print("SUM: ", total)
+#print(sum(int(list_of_sum)))
