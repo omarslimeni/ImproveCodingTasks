@@ -1,0 +1,15 @@
+lines = open("instructions.txt").readlines()
+def compute():
+    x=1
+    for line in lines:
+        match line.split():
+            case ["addx", v]:
+                yield x
+                yield x
+                x += int(v)
+            case ["noop"]:
+                yield x
+
+print(sum(i* x for i, x in enumerate(compute(),start=1) if i % 40 == 20))
+crt={'.H'[x<= i%40<= x+2] for i,x in enumerate(compute(),start=1)]
+print('\n'.join(map(''.join, zip(*[iter(crt)]*40))))
