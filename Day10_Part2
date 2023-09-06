@@ -1,0 +1,39 @@
+#Day10_Part2
+#result : PLEFULPB
+#same file instructions.txt
+#third method for part1 which help to solve the second part
+
+#code:
+
+file_instructions = open("instructions.txt", "r").readlines()
+
+cycle = [1]
+for instruction in file_instructions:
+    if instruction.startswith("a"):
+        for i in range(2):
+            if i == 0:
+                cycle.append(cycle[-1])
+                print(cycle)
+            if i == 1:
+                cycle.append(cycle[-1]+int(instruction.split()[1]))
+                print("ee", cycle)
+
+
+    elif instruction.startswith("n"):
+        cycle.append(cycle[-1])
+        print("nnopcycle", cycle)
+
+score = [i * cycle[i-1] for i in range (20,240,40)]
+print(score)
+print(sum(score))
+
+output = ""
+for i, value in enumerate(cycle):
+    if cycle[i] in range((i % 40) - 1, (i % 40) + 2):
+        output += "#"
+    else:
+        output += "."
+    if (i + 1) % 40 == 0:
+        output += "\n"
+
+print(output)
