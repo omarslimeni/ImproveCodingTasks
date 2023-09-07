@@ -1,0 +1,203 @@
+#Day11_Part1_Second_draft
+
+#Day11_Part1
+
+
+
+# open and read the file
+lines = open("worries_level.txt", "r").read().split('\n')
+number_of_monkey = 0
+for i in lines:
+    if i == '':
+        lines.remove(i)
+for i in lines:
+    #print(i)
+    if i.startswith("M"):
+        number_of_monkey = number_of_monkey + 1
+
+#print(lines)
+#print(number_of_monkey)
+
+
+
+import re
+
+
+from more_itertools import one
+list_of_item = []
+list_of_operation = []
+for j in range(len(lines)):
+    if "Starting items" in lines[j]:
+        list_of_item_of_each_monkey = re.findall('[0-9]+', lines[j])
+        list_of_item.append(list_of_item_of_each_monkey)
+    elif "Operation" in lines[j]:
+        list_of_operation_of_each_monkey = lines[j]
+        list_of_operation.append(list_of_operation_of_each_monkey)
+#print("list_of_items",list_of_item)
+#print("eeeeeeeeeeeeeeeeeeee",list_of_operation)
+q=1
+for m in range(3):
+    list = [i * 0 for i in range(len(list_of_item))]
+    print("list_of_items", list_of_item)
+    print("eeeeeeeeeeeeeeeeeeee", list_of_operation)
+    for j in list_of_operation:
+        if "Operation: new" in j and "+" in j:
+            p = list_of_operation.index(j)
+            # print(p)
+            worrie_level = re.findall('[0-9]+', j)
+            b = one(worrie_level)
+            # print("eee",b)
+            list_opp_m = []
+            # print("rrttrt",len(list_of_item))
+
+            for k in list_of_item[p]:
+                # print(list_of_item[p])
+                list_opp_m.append(int((int(k) + int(b)) / 3))
+                # print(list_opp_m)
+            list[p] = list_opp_m
+            # list_of_operation.append(list_operaation_each_monkey)
+        elif "Operation: new" in j and "*" in j and re.findall('[0-9]+', j) != []:
+            p = list_of_operation.index(j)
+            # print(p)
+            worrie_level = re.findall('[0-9]+', j)
+            b = one(worrie_level)
+            #print("eee", b)
+            list_opp_m = []
+            # print("rrttrt", len(list_of_item))
+
+            for k in list_of_item[p]:
+                # print(list_of_item[p])
+                list_opp_m.append(int((int(k) * int(b)) / 3))
+                # print(list_opp_m)
+            list[p] = list_opp_m
+        elif "Operation: new" in j and "*" in j and re.findall('[0-9]+', j) == []:
+            p = list_of_operation.index(j)
+            # print(p)
+            # worrie_level = re.findall('[0-9]+', j)
+            # b = one(worrie_level)
+            # print("eee",b)
+            list_opp_m = []
+            # print("rrttrt", len(list_of_item))
+
+            for k in list_of_item[p]:
+                # print(list_of_item[p])
+                list_opp_m.append(int((int(k) * int(k)) / 3))
+                # print(list_opp_m)
+            list[p] = list_opp_m
+
+    #print("list_of_items_after_operation = list", list)
+    divisible_list = []
+    for j in range(len(lines)):
+        if "Test: divisible by" in lines[j]:
+            value = re.findall('[0-9]+', lines[j])
+            divisible_list.append(int(one(value)))
+    #print("disible_value_list", divisible_list)
+    #q = len(list_of_item[len(list_of_item) - 1])
+    #q=1
+    # q1 = []
+    # q1 =list[q]
+    print("aetaayeyyuaueaue", q)
+
+    for i in range(len(list)):
+        #print(i)
+        z = list[i]
+        g = list_of_item[i]
+        # print(z)
+        for k in range(len(list[i])):
+            print(list[i])
+            print(k)
+            # print(divisible_list[i])
+            if i == 0:
+                # print("ok")
+                if (list[i][k]) % divisible_list[i] != 0:
+                    #print("ok")
+                    z1 = list_of_item[3]
+                    z1.append(list[i][k])
+                    list[3].append(list[i][k])
+                    #print("ttttttttttttttt",z1)
+                elif list[i][k] % divisible_list[i] == 0:
+                    z1 = list_of_item[2]
+                    list[2].append(list[i][k])
+                    z1.append(list[i][k])
+                list_of_item[i].clear()
+
+                #print("ttt", list)
+                # print(list_of_item[i])
+                #print("after_division", list_of_item)
+            elif i == 1:
+                # print("ok")
+                if list[i][k] % divisible_list[i] != 0:
+                    #print("ok")
+                    z1 = list_of_item[0]
+                    z1.append(list[i][k])
+                    list[0].append(list[i][k])
+                    #print(z1)
+                elif list[i][k] % divisible_list[i] == 0:
+                    z1 = list_of_item[2]
+                    z1.append(list[i][k])
+                    list[2].append(list[i][k])
+                list_of_item[i].clear()
+
+                #print("ttt", list)
+                #print("after_division", list_of_item)
+            elif i == 2:
+                # print("ok")
+                if list[i][k] % divisible_list[i] != 0:
+                    # print("ok")
+                    z1 = list_of_item[3]
+                    z1.append(list[i][k])
+                    list[3].append(list[i][k])
+                    #print(z1)
+                elif list[i][k] % divisible_list[i] == 0:
+                    z1 = list_of_item[1]
+                    z1.append(list[i][k])
+                    list[1].append(list[i][k])
+                list_of_item[i].clear()
+
+                #print("ttt", list)
+                # print(list_of_item[i])
+                #print("after_division", list_of_item)
+            elif i == 3:
+               # print("ttt==", list)
+                print("helloworld")
+                #print(list[i][k])
+                if k < q:
+                    if list[i][k] % divisible_list[i] != 0:
+                        #print("ok")
+                        z1 = list_of_item[1]
+                        z1.append(list[i][k])
+                        list[1].append(list[i][k])
+                        #print(z1)
+                    elif list[i][k] % divisible_list[i] == 0:
+                        z1 = list_of_item[0]
+                        z1.append(list[i][k])
+                        list[0].append(list[i][k])
+                    list_of_item[i].clear()
+
+                elif k >= q:
+                    if list[i][k] % divisible_list[i] != 0:
+                        #print("ok")
+                        z1 = list_of_item[1]
+                        #print(list[i][k] + 3)
+                        z1.append(int(((list[i][k]) + 3) / 3))
+                        list[1].append(list[i][k])
+                        #print(z1)
+                    elif list[i][k] % divisible_list[i] == 0:
+                        z1 = list_of_item[0]
+                        #print(list[i][k] + 3)
+                        z1.append(int((list[i][k] + 3) / 3))
+                        list[0].append(list[i][k])
+                        #print(z1)
+                    list_of_item[i].clear()
+                    q = len(list_of_item[len(list_of_item) - 1])
+                    print("ggggggg",q)
+
+            print("list",list)
+            print("new list of item", list_of_item)
+        print("finish monkey i")
+    print("round is finished")
+
+
+
+ 
+
