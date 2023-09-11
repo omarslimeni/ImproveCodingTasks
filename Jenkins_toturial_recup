@@ -1,0 +1,58 @@
+why continuous integration?
+What is DEVOPS?
+what is jenkins?
+what aere jenkins features?
+jenkins architecture?
+Jenkins installation and setup
+----------------------------------------------------------------------------------------
+
+why continuous integration?
+
+if we look to software development its process that have different parts : the building phase , the implementation phase , the designing phase , testing phase
+                                                                            the deployment phases , the maintenance phase , the monitoring phase
+the developpers push their codes to the source code manager and the codes will be pulled by the testers than build then go to deployment => simple pipline
+when lot of part are participating so we need to aplly continious integration because it help us to connect the defferent part of pipline
+make the process in a big organization more formal and can handle lot of projects at the same time.
+
+
+What is DEVOPS?
+
+Dev = developers
+OPS = oparations to do
+
+we can see devops as a way of software development or a set of values and principles
+
+=> the Software quality should be very high
+
+Devop phases: 
+-continuous development where the developers continue developping and pushing their codes to source code manager
+-Contnuous testing ; the build software comes and tested by the scripts created by testers
+-Continuous integration ; connects all the phases continuous development , continuous testing , continuous deployment and monitoring
+-Continuous deployment ; when saccufully tested the code is deployed sent to the end user
+-Continuous monitoring ; like a feedback from end users 
+
+benefits : increase productivity insure high quality of product (exellence = happy customers) and less resources
+
+what is jenkins?
+
+Jenkins its an open source continuous integration tool written in Java allow us to automate the Software development process, making sure that there is minimum involvement from us.
+it also integrates all the differents parts of the development
+
+using jenkins you we create a built job that every time we push a code to the repository it detect automatically that change in the repository
+it clone the code to sepecific server and start the actions relation to the development phases
+
+benifits : its community source open source, free tool, support very large number of plugins , it can run with any platfrorm without any compatibility issue
+
+
+Jenkins architecture:
+we have multiple jenkins server : jenkins master node and jenkins slave nodes
+
+one jenkins sever can handle specific numbers of requests
+
+the master devide the jobs among the slaves
+
+
+
+
+
+
