@@ -1,0 +1,127 @@
+why continuous integration?
+What is DEVOPS?
+what is jenkins?
+what aere jenkins features?
+jenkins architecture?
+Jenkins installation and setup
+
+part2:
+what is jenkins?
+why we need continious integration?
+Continuous integration?
+Continuous Delivery?
+Continuous deployment?
+Continuous Integration is also a mindset !!
+term relatd to jenkins?
+why jenkins is popular?
+Jenkins master salve's architecture?
+
+
+----------------------------------------------------------------------------------------
+
+why continuous integration?
+
+if we look to software development its process that have different parts : the building phase , the implementation phase , the designing phase , testing phase
+                                                                            the deployment phases , the maintenance phase , the monitoring phase
+the developpers push their codes to the source code manager and the codes will be pulled by the testers than build then go to deployment => simple pipline
+when lot of part are participating so we need to aplly continious integration because it help us to connect the defferent part of pipline
+make the process in a big organization more formal and can handle lot of projects at the same time.
+
+
+What is DEVOPS?
+
+Dev = developers
+OPS = oparations to do
+
+we can see devops as a way of software development or a set of values and principles
+
+=> the Software quality should be very high
+
+Devop phases: 
+-continuous development where the developers continue developping and pushing their codes to source code manager
+-Contnuous testing ; the build software comes and tested by the scripts created by testers
+-Continuous integration ; connects all the phases continuous development , continuous testing , continuous deployment and monitoring
+-Continuous deployment ; when saccufully tested the code is deployed sent to the end user
+-Continuous monitoring ; like a feedback from end users 
+
+
+
+benefits : increase productivity insure high quality of product (exellence = happy customers) and less resources
+
+what is jenkins?
+
+Jenkins its an open source continuous integration tool written in Java allow us to automate the Software development process, making sure that there is minimum involvement from us.
+it also integrates all the differents parts of the development
+
+using jenkins you we create a built job that every time we push a code to the repository it detect automatically that change in the repository
+it clone the code to sepecific server and start the actions relation to the development phases
+
+benifits : its community source open source, free tool, support very large number of plugins , it can run with any platfrorm without any compatibility issue
+
+
+Jenkins architecture:
+we have multiple jenkins server : jenkins master node and jenkins slave nodes
+
+one jenkins sever can handle specific numbers of requests
+
+the master devide the jobs among the slaves
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+what is jenkins?
++ Developers commit code to a shared repository on a regular  basis.
++ Version control system is being monitored.When a commit is detected, a build will be triggered automatically.
++ If the build is not green,developers will be notified immediately.
+why we need continious integration?
++ Detect problems or bugs, as early as possible, in the development life cycle.
++ Since the entire code base is integrated, built and tested constantly,the potential bugs and errors are caught earlier in	
+the life cycle which results in	better quality software.
+
+
++Continuous Integration
+The practice of merging development work with the main branch constantly. 
++Continuous Delivery
+Continual delivery of code to an environment once the code is ready to ship. This could be staging or production. The idea is the product is delivered to a user base, which can be QAs or customers for review and inspection. 
++Continuous Deployment
+The deployment or release of code to production as soon as it is ready.
+
+
++Continuous Integration is also a mindset 
+• Fixing broken builds should be treated as a high priority issue for all team members. 
+• The deployment process should be automated, with no manual steps involved. 
+• All team members should focus on contributing to high-quality tests because the confidentiality of the CI process highly depends on the quality of the tests.
+
+
+terms related to jenkins?
+Jenkins is a continuous integration and build server. 
+It is used to manually, periodically, or automatically build software development projects. 
+It is an open source Continuous Integration tool written in Java. 
+Jenkins is used by teams of all different sizes, for projects with various languages.
+
+why jenkins is popular?
+
+• Easy to use 
+• Great extensibility 
+– Support different version control systems 
+– Code quality metrics
+ – Build notifiers 
+– UI customization
+
+Jenkins master salve's architecture?
+
+Master: 
+• Schedule build jobs.
+ • Dispatch builds to the slaves for the actual job execution.
+ • Monitor the slaves and record the build results.
+ • Can also execute build jobs directly. 
+Slave: 
+• Execute build jobs dispatched by the master.
+
+
+
+
+
+
+
+
+
+
