@@ -1,0 +1,67 @@
+the VT system is a modular hardware for controlling i o ECU connections for testing purposes
+the connections are controlled via CANoe and the tests are scripted in Vector CAnoe
+the connections of the ECU sensors or actuators are linked to VT modules
+the sensors or actuators of the ECU could be simulated via VT system modules
+the ECU's signals are measured and processed and passed to CANoe
+the simulated signals can be created by the vT modules
+VT modules can generate electrical errors  like short circuit 
+the VT system is completelly controlled by CANoe
+the VT system is a test system for executing functional tests on automotive ECUs in laboratory.
+at least we have two supply voltage in a test syetem
+VT system supply voltage : 12V supply voltage needed to run the electronics in the VT syetem modules Vvt
+ECU supply voltage Vbatt : this supply voltage powers the ECU under test. ( like the battery in the Car) controlled by the power module VT7001.
+we have three ground ; Ground of Vvt , digital ground of Vbat of ECU under test 
+and we have Areference ground : AGND analog ground when we have output signal from ECU the measurement is done againt AGND not DGND.
+AGND and DGND can also be connected by a relay on the VT8006A and VT8012A
+
+
+-------------------------------------------------------------------------------------
+All modules of the VT System are synchronized with each other using the EtherCAT bus.
+The VT System is synchronized with CANoe using EtherCAT, too.
+VT7001 and VT7001A can be used for syncronization of HW slaves
+
+-------------------------------------------------------------------------------------
+modules:
+VT1004A/VT1104 Load and measurement Module
+the VT1004A module is connected to up to 4 outputs of an ECU such as lamps or actuator in real vehicle 
+it measure the output voltage of the ECU (RMS values avarage values)
+measurment of PWM in ECU output
+it contain relay to connect ECU to real actuator
+it contains relay to perfrom electrical errors
+
+
+VT2004 simulation module
+VT2004A is connected to up to four inputs of an ECU, 
+which are connected in real invehicle operation to sensors like temperature probes or switches.
+The VT2004A outputs signals to the ECU to simulate sensors and thus to stimulate the ECU.
+it contain relay to connect ECU input to real sensor
+it contains relay to perfrom electrical errors
+it perform sensor simulation 
+
+VT2516A digital module
+VT2516A is connected to up to 16 mainly digitally used inputs and outputs of an ECU. 
+Measurement of the digital ECU output signal and the ECU output voltage
+Simulation of the actuator load by an externally mounted load 
+Sensor simulation by output of a digital or PWM signal with defined high/low level
+Sensor simulation by switching the ECU line to ECU ground or Vbatt
+Relays to connect the ECU input or output to the original sensor or actuator
+Relays to generate electrical errors 
+
+
+VT2710 Serial Interface Module 
+VT2710 provides a set of interfaces which are required for testing serial communication channels of ECUs or sensors. 
+The module can be used either to simulate the sensor or the ECU behavior on a serial bus channel.
+Like hall sensor.
+
+VT2820 relay module
+The VT2820 provides 20 relay channels.
+These can be used for example to switch various signal paths in a test system, to realize a switch matrix, or to generate errors like short-circuits.
+
+
+
+
+
+
+
+
+ 
