@@ -1,0 +1,56 @@
+LIN Local interconected Network
+low speed bus up to 20 kbps
+single master multi slaves
+no arbitration required for LIN
+guaranted message latency time
+
+can be used in side mirrors doors switches window lift seat switches sunroof control ...
+low cost implimentation based on UART interface , single wire , no hardware LIN controller required ,no crystal required for slaves
+LIN has only one node that can start message transmission , no arbitraion
+LIN protocol is handled by software drivers , cAN is handled by harware controllers
+LIN has Schedule table which control bus utilization
+
+device we need for LIN : example Vehicle Spy
+
+LIN frame:
+one message has two sources
+master slaves protocol
+master control alll communcations
+
+we have master header + slave data
+
+unconditional frame:
+unconditional frames carry signals and their iditifier are from 0 to 0x3B
+the header of unconditional frame is always transmitted when a frame slot allocated to the unconditional frame is processed
+the publisher of the unconditional frame of the slave shall always provide the response to the header
+header slave one responf , header slave two can respond also header from master and the master can be a slave so it can respond
+Event Triggered frame:
+the purpose of an event trigged frame is to increase the responsitivity of the LIN cluster 
+all subscribers of the event triggered frame shall receive the frame and use its data as if the associeted unconditional frame was received
+if we get two response from slave 1 and 2 we will have collosion and master need to reset the schedule table
+
+sporadic frames
+sporadic frame is a group of unconditional frames that share the same frame slot.
+
+LIN master header : LIN break + Sync Byte + ID filed Byte
+
+for the id : 0x0 to 0x3B for normal frames and 0x3C and 0x3D for diagnostic purposes
+
+LIN break indicates a new frame is starting 
+13 bits low and 1 bit high
+
+sync used to allow salve detect baud rate
+hew value 0x55
+least significant bit firt
+
+in the id  = protected identifier that contains identifier and parity 2 bit (64 different ids)
+the slave could fill in 0-8 data byte and the last byte is always a checksum
+
+LIN organizes LIN transmission with schedule table 
+ther are predefined lists of IDs with assiciated transmission times
+unlike CAN the master concept makes the bus time deterministic
+
+
+
+
+
