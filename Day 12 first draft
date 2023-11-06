@@ -1,0 +1,44 @@
+#Day 12
+#03/11/2023
+# first draft
+
+#def Read_File_content():
+Result = open("dir.txt")
+Lines = Result.readlines()
+print(Lines)
+result_list = [item.strip() for item in Lines]
+
+
+print(result_list)
+line_length = len(result_list)
+print(line_length)
+column_length = len(result_list[0])
+print(column_length)
+# for i in range(len(result_list)):
+#     print(*result_list[i])
+start = []
+for j in range(line_length):
+    for k in range(column_length):
+        if result_list[j][k] == 'S':
+            print(j,k)
+            start.append(j)
+            start.append(k)
+print(start)
+
+End = []
+for j in range(line_length):
+    for k in range(column_length):
+        if result_list[j][k] == 'E':
+            print(j,k)
+            End.append(j)
+            End.append(k)
+print(End)
+
+
+for dx,dy in ((0,1),(0,-1),(1,0),(-1,0)):
+    print(dx,dy)
+    if start[0] + dx < End[0]:
+        if start[1] + dy < End[1]:
+           print("keep searching")
+
+
